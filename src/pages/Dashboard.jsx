@@ -18,7 +18,7 @@ const Dashboard = () => {
       
       try {
         // This would be replaced with a real API call in a production app
-        const response = await fetch('http://localhost:5001/api/projects');
+        const response = await fetch(`${process.env.REACT_APP_API_URL || '/api'}/projects`);
         
         // If the API is not yet implemented, use mock data
         if (!response.ok) {
