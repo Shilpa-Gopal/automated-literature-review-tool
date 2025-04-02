@@ -1,38 +1,25 @@
-
-
 # Backend Framework
-Flask==2.2.3
-Flask-Cors==3.0.10
-Flask-SQLAlchemy==3.0.3
-Werkzeug==2.2.3
-
+Flask==2.3.3
+Flask-Cors==4.0.0
+Flask-SQLAlchemy==3.1.1
+Werkzeug==2.3.7
 # Database
-SQLAlchemy==2.0.7
-alembic==1.10.2
-
+SQLAlchemy==2.0.23
+alembic==1.12.1
 # Authentication
-Flask-JWT-Extended==4.4.4
+Flask-JWT-Extended==4.5.3
 bcrypt==4.0.1
-
 # Data Processing
-pandas==1.5.3
-numpy==1.24.2
-scikit-learn==1.2.2
-scipy==1.10.1
-xgboost==1.7.5
-
+pandas==2.1.3
+numpy==1.26.2
+scikit-learn==1.3.2
+scipy==1.11.4
+xgboost==2.0.2
 # Natural Language Processing
-scikit-learn==1.2.2
-spacy==3.5.1
-
+spacy==3.7.2
 # File Processing
 openpyxl==3.1.2
 xlrd==2.0.1
-
 # Utilities
 python-dotenv==1.0.0
-gunicorn==20.1.0
-
-# Download spaCy model
-# Run this after installing the requirements:
-# python -m spacy download en_core_web_sm
+gunicorn==21.2.0
