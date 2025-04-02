@@ -4,9 +4,6 @@
     {
       "src": "api/test.py",
       "use": "@vercel/python"
-      "config": {
-        "runtime": "python3.9"
-      }
     },
     {
       "src": "package.json",
