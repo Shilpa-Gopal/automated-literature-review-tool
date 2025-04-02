@@ -1,18 +1,18 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os
+import sys
+import spacy
 from datetime import datetime, timedelta
-
 from server.models import db
 from server.models.user import User
 from server.models.project import Project
-from server.models.citation import Citation,TrainingSelection
+from server.models.citation import Citation, TrainingSelection
 from server.api.auth import auth_api
 from server.api.projects import projects_api
 from server.api.citations import citations_api
 from server.config import Config
 from flask_jwt_extended import JWTManager
-
 
 def create_app(config_class=Config):
     """Create and configure Flask application."""
@@ -24,6 +24,20 @@ def create_app(config_class=Config):
     CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
     
     jwt = JWTManager(app) # Initialize JWT manager
+    
+    # Add spaCy model loading
+    def load_spacy_model():
+        try:
+            return spacy.load("en_core_web_sm")
+        except OSError:
+            import subprocess
+            print("Downloading spaCy model...")
+            subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+            return spacy.load("en_core_web_sm")
+    
+    # Load the model
+    app.nlp = load_spacy_model()
+    
     # Register blueprints
     app.register_blueprint(auth_api, url_prefix='/api/auth')
     app.register_blueprint(projects_api, url_prefix='/api/projects')
