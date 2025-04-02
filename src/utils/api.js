@@ -1,7 +1,7 @@
 // src/utils/api.js
 
 // API base URL - read from environment or use default
-export const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+export const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 /**
  * Make an API request with appropriate error handling
