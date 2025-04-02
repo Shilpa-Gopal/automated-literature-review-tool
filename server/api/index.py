@@ -1,15 +1,15 @@
-import sys
-import os
+from flask import Flask
 
-# Add server directory to path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+app = Flask(__name__)
 
-# Import your Flask app
-from server.app import create_app
+@app.route('/api', methods=['GET'])
+def home():
+    return {"message": "API is working"}
 
-# Initialize the app
-app = create_app()
+@app.route('/api/test', methods=['GET'])
+def test():
+    return {"message": "Test endpoint is working"}
 
-# Vercel handler
-def handler(request, context):
-    return app(request, context)
+# Must have this for Vercel serverless functions
+if __name__ == '__main__':
+    app.run()
